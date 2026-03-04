@@ -3,11 +3,14 @@ const std = @import("std");
 pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
 
-    const target = b.resolveTargetQuery(.{
-        .cpu_arch = .x86_64,
-        .os_tag = .freestanding,
-        .abi = .none,
+const target = b.standardTargetOptions(.{
+        .default_target = .{
+            .os_tag = .freestanding,
+            .abi = .none,
+        },
     });
+
+    const target_info = target.result;
 
     const module = b.createModule(.{
         .root_source_file = b.path("src/root.zig"),
@@ -17,7 +20,7 @@ pub fn build(b: *std.Build) void {
 
     module.red_zone = false;
     module.stack_protector = false;
-    module.code_model = .kernel;
+    module.code_model = if (target_info.cpu.arch == .aarch64) .small else .kernel;
     module.omit_frame_pointer = false;
     module.unwind_tables = .none;
     module.strip = true;

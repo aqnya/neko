@@ -4,8 +4,7 @@ const builtin = @import("builtin");
 const init = @import("init.zig");
 
 export fn load() c_int {
-    init.init();
-    return 0;
+   return  init.init();
 }
 
 export fn exit() void {
@@ -47,7 +46,7 @@ comptime {
             \\    stp x29, x30, [sp, #-16]!  
             \\    mov x29, sp
             \\    bl load
-            \\    mov w0, #0
+      //      \\    mov w0, #0
             \\    ldp x29, x30, [sp], #16   
             \\    autiasp                   
             \\    ret

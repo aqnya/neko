@@ -1,5 +1,5 @@
-obj-m += neko_module.o
-neko_module-y := stub.o neko.o
+obj-m += neko.o
+neko_module-y := stub.o neko_main.o
 
 KDIR := /lib/modules/$(shell uname -r)/build
 PWD := $(shell pwd)
