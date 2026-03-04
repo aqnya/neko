@@ -23,8 +23,7 @@ jobs:
 
     steps:
     - name: Checkout source code
-      run: |
-        git clone https://github.com/FMAC-Team/nekosu.git -b test
+      uses: actions/checkout@v4
 
     - name: Build neko.ko
       run: |
