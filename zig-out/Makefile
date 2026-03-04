@@ -1,8 +1,11 @@
 obj-m += neko.o
 neko_module-y := stub.o neko_main.o
 
-KDIR := /lib/modules/$(shell uname -r)/build
-PWD := $(shell pwd)
+KDIR := $(KDIR)
+MDIR := $(realpath $(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
+IDIR := $(MDIR)/include
 
 all:
-	$(MAKE) -C $(KDIR) M=$(PWD) modules
+	make -C $(KDIR) M=$(MDIR) modules
+clean:
+	make -C $(KDIR) M=$(MDIR) clean
