@@ -1,5 +1,5 @@
-obj-m += neko.o
-neko-y := stub.o neko_main.o
+obj-m += neko_md.o
+neko-y := stub.o neko.o
 
 KDIR := $(KDIR)
 MDIR := $(realpath $(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
