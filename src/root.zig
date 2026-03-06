@@ -4,7 +4,7 @@ const builtin = @import("builtin");
 const init = @import("init.zig");
 
 export fn load() c_int {
-   return  init.init();
+    return init.init();
 }
 
 export fn exit() void {
@@ -21,7 +21,7 @@ comptime {
             \\    push %rbp
             \\    mov %rsp, %rbp
             \\    call load
-      //      \\    xor %eax, %eax
+            //      \\    xor %eax, %eax
             \\    pop %rbp
             \\    jmp __x86_return_thunk
             \\.size zig_init, .-zig_init
@@ -46,7 +46,7 @@ comptime {
             \\    stp x29, x30, [sp, #-16]!  
             \\    mov x29, sp
             \\    bl load
-      //      \\    mov w0, #0
+            //      \\    mov w0, #0
             \\    ldp x29, x30, [sp], #16   
             \\    autiasp                   
             \\    ret

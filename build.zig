@@ -3,7 +3,7 @@ const std = @import("std");
 pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
 
-const target = b.standardTargetOptions(.{
+    const target = b.standardTargetOptions(.{
         .default_target = .{
             .os_tag = .freestanding,
             .abi = .none,
